@@ -1,0 +1,195 @@
+/* Configuração geral solicitada na atividade */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 32px 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef2f7;
+    color: #ffffff;
+}
+
+div {
+    display: inline-block;
+    border: 1px solid #111111;
+    width: 200px;
+    height: 200px;
+    vertical-align: top;
+}
+
+/* Seletor de ID: define o painel e centraliza o conjunto na página */
+#painel {
+    display: block;
+    width: 640px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 8px;
+    border: 0;
+    background: #ffffff;
+    font-size: 0; /* remove o espaço entre elementos inline-block */
+}
+
+/* Seletor descendente + ID: cabeçalho ocupa toda a largura do painel */
+#painel .cabecalho {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 86px;
+    margin: 0 0 8px;
+    padding: 12px 16px;
+    border: 1px solid #101010;
+    background: #092b63;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Seletores descendentes para os textos do cabeçalho */
+#painel .cabecalho h1 {
+    margin: 0 0 6px;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+#painel .cabecalho h1::before {
+    content: "☀️";
+    margin-right: 12px;
+}
+
+#painel .cabecalho p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Classe base: todos os cards têm o mesmo tamanho e espaçamento */
+.card {
+    width: calc((100% - 24px) / 3);
+    height: 200px;
+    margin: 0 4px 8px;
+    padding: 34px 8px 12px;
+    border: 1px solid #111111;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    vertical-align: top;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Seletor de filho: centraliza o conteúdo direto de cada card */
+#painel > .card {
+    text-align: center;
+}
+
+#painel > .card > span,
+#painel > .card > strong {
+    display: block;
+    width: 100%;
+}
+
+#painel > .card > span::before {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 36px;
+    line-height: 1.2;
+}
+
+#painel > .card > strong {
+    margin-top: 10px;
+    font-size: 22px;
+}
+
+/* Cores individuais dos cards */
+.temperatura {
+    background: #087cf0;
+}
+
+.temperatura > span::before {
+    content: "☀️";
+}
+
+.umidade {
+    background: #159b43;
+}
+
+.umidade > span::before {
+    content: "💧";
+}
+
+.vento {
+    background: #7138ce;
+}
+
+.vento > span::before {
+    content: "🌬️";
+}
+
+.condicao {
+    background: #f28a00;
+}
+
+.condicao > span::before {
+    content: "☁️";
+}
+
+.amanha {
+    background: #05a7aa;
+}
+
+.amanha > span::before {
+    content: "🗓️";
+}
+
+.localizacao {
+    background: #e83268;
+}
+
+.localizacao > span::before {
+    content: "📍";
+}
+
+/* Seletor estrutural: o cabeçalho é o primeiro div; Condição é o quinto */
+#painel > div:nth-child(5) {
+    border: 4px solid #111111;
+}
+
+/* Pseudo-classe: efeito ao passar o mouse por qualquer card */
+.card:hover {
+    position: relative;
+    z-index: 2;
+    transform: scale(1.04);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+    cursor: pointer;
+}
+
+/* Pseudo-classe específica: o card Vento fica mais claro */
+.vento:hover {
+    background: #a17ae8;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 620px) {
+    #painel {
+        width: 100%;
+    }
+
+    .card {
+        width: calc(50% - 8px);
+        height: 180px;
+        padding-top: 26px;
+    }
+}
+
+@media (max-width: 400px) {
+    .card {
+        width: calc(100% - 8px);
+        height: 160px;
+        padding-top: 20px;
+    }
+
+    #painel .cabecalho h1 {
+        font-size: 20px;
+    }
+}
